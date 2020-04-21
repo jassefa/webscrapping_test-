@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron text-center">
+      <h1>Mars Info</h1>
+      <p><a class="btn-primary btn-lg" href="/scrape" role="button">Mars info</a></p>
+    </div>
+    <div class="row" id="Mars info">
+      <div class="col-md-12">
+        <h4 class="heading">{{mars_data.title}}</h4>
+        <p>{{mars_data.par}}</p>
+      <!--Mars Featured Image, Mars Tweet, & Mars Facts-->
+      <h1 >Featured Mars Image</h1>
+      <h3 >Current Weather on Mars</h3>
+      <div align="right">{{mars_data.mars_t_weather}}</div>
+      <br>
+      <img align="left" src="{{mars_data.base_nasa_image}}" alt = "...">
+      <br>
+      <br>
+      <br>
+      <h3 align="right">Mars Facts</h3>
+      <div align="right">{{mars_data.Facts | safe}}</div>
+  </section>
+  <section class="container">
+      <!-- Mars Hemispheres -->
+      <div class="page-header">
+        <h2 class="text-center">Mars Hemispheres</h2>
+      </div>
+      {% for hem in mars_data.images %}
+        <div class="col-md-6">
+           <div class="thumbnail"> 
+
+            <img src="{{hem.img_url}}" alt="...">
+             <div class="caption">
+                <h3>{{hem.title}}</h3>
+             </div>
+            </div>
+        </div>
+      {% endfor %}
+  </section>
+</body>
+</html>
